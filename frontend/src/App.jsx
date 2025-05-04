@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import Accueil from './pages/Accueil';
 import Expertise from './pages/Expertise';
@@ -12,80 +12,75 @@ import Demo from './pages/Demo/Demo';
 import Contact from './pages/Contact';
 import { Linkedin, Phone, Mail, MapPin, Menu, X } from 'lucide-react';
 
+// Map of path to page title
+const pageTitles = {
+  '/': 'Accueil',
+  '/expertise': 'Notre expertise',
+  '/solutions': 'Solutions IA',
+  '/cas-usage': 'Cas d’usage',
+  '/projets': 'Projets R&D',
+  '/investir': 'Pourquoi investir',
+  '/vision': 'Notre vision IA',
+  '/blogs': 'Blogs',
+  '/demo': 'Demo',
+  '/contact': 'Contact',
+};
 
+function Navbar({ isMenuOpen, toggleMenu, closeMenu }) {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const currentPageTitle = pageTitles[currentPath] || '';
+
+  return (
+    <nav className="bg-black text-white p-6 shadow-lg sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto flex justify-between items-center">
+        {/* Logo and Page Title */}
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-1">
+          
+          <span className="text-sm text-gray-400 md:ml-4">{currentPageTitle}</span>
+        </div>
+
+        {/* Hamburger Icon for Mobile */}
+        <div className="md:hidden" onClick={toggleMenu}>
+          {isMenuOpen ? (
+            <X className="h-6 w-6 text-white" />
+          ) : (
+            <Menu className="h-6 w-6 text-white" />
+          )}
+        </div>
+
+        {/* Nav Links */}
+        <div className={`flex flex-col md:flex-row justify-center md:justify-end gap-4 md:space-x-6 ${isMenuOpen ? 'block' : 'hidden'} md:flex`}>
+          {Object.entries(pageTitles).map(([to, label]) => (
+            <NavLink
+              key={to}
+              to={to}
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const apiUrl = process.env.REACT_APP_API_URL;
-  console.log((apiUrl));
-  
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <Router>
       <div className="bg-black min-h-screen text-white">
-        {/* Navbar */}
-        <nav className="bg-black text-white p-6 shadow-lg sticky top-0 z-50">
-       
-          <div className="max-w-6xl mx-auto flex justify-between items-center">
-            
-            {/* Hamburger Icon for Mobile */}
-            <div className="md:hidden" onClick={toggleMenu}>
-              {isMenuOpen ? (
-                <X className="h-6 w-6 text-white" />
-              ) : (
-                <Menu className="h-6 w-6 text-white" />
-              )}
-            </div>
-
-            {/* Links for Desktop and Mobile */}
-            <div className={`flex flex-col md:flex-row justify-center md:justify-end gap-4 md:space-x-6 ${isMenuOpen ? 'block' : 'hidden'} md:flex`}>
-              <NavLink to="/" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Accueil
-              </NavLink>
-              <NavLink to="/expertise" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Notre expertise
-              </NavLink>
-              <NavLink to="/solutions" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Solutions IA
-              </NavLink>
-              <NavLink to="/cas-usage" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Cas d’usage
-              </NavLink>
-              <NavLink to="/projets" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Projets R&D
-              </NavLink>
-              <NavLink to="/investir" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Pourquoi investir
-              </NavLink>
-              <NavLink to="/vision" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Notre vision IA
-              </NavLink>
-              <NavLink to="/blogs" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Blogs
-              </NavLink>
-              <NavLink to="/demo" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Demo
-              </NavLink>
-              <NavLink to="/contact" className={({ isActive }) =>
-                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
-                Contact
-              </NavLink>
-            </div>
-          </div>
-        </nav>
+        <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />
 
         {/* Main Content */}
-        <div className="bg-white text-black">
+        <div className="bg-white text-black pt-24">
           <Routes>
             <Route path="/" element={<Accueil />} />
             <Route path="/expertise" element={<Expertise />} />
@@ -101,9 +96,8 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-black text-white p-6 shadow-lg sticky top-0 z-50">
+        <footer className="bg-black text-white p-6 mt-10">
           <div className="max-w-6xl mx-auto text-center">
-          
             <p>&copy; 2025 Votre Entreprise - Tous droits réservés</p>
             <div className="flex justify-center gap-8 mt-4">
               <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
