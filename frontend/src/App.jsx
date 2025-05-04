@@ -37,7 +37,8 @@ function Navbar({ isMenuOpen, toggleMenu, closeMenu }) {
         {/* Logo and Page Title */}
         <div className="flex flex-col md:flex-row items-start md:items-center gap-1">
           
-          <span className="text-sm text-gray-400 md:ml-4">{currentPageTitle}</span>
+        <span className="text-sm text-gray-400 md:hidden">{currentPageTitle}</span>
+
         </div>
 
         {/* Hamburger Icon for Mobile */}
@@ -98,7 +99,7 @@ function App() {
         {/* Footer */}
         <footer className="bg-black text-white p-6 mt-10">
           <div className="max-w-6xl mx-auto text-center">
-            <p>&copy; 2025 Votre Entreprise - Tous droits réservés</p>
+            
             <div className="flex justify-center gap-8 mt-4">
               <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
                 <Linkedin className="h-6 w-6" />
@@ -116,6 +117,7 @@ function App() {
             <div className="mt-4 text-sm">
               <p>10 Rue de l'Innovation, Paris, France</p>
             </div>
+              <p>&copy; 2025 Votre Entreprise - Tous droits réservés</p>
           </div>
         </footer>
       </div>
