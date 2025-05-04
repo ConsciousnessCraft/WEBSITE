@@ -81,7 +81,7 @@ function App() {
         <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} closeMenu={closeMenu} />
 
         {/* Main Content */}
-        <div className="bg-white text-black pt-24">
+        <div className="bg-white text-black pt-0">
           <Routes>
             <Route path="/" element={<Accueil />} />
             <Route path="/expertise" element={<Expertise />} />

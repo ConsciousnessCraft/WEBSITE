@@ -31,7 +31,7 @@ const useCases = [
 export default function CasUsage() {
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Cas d’usage de l’IA</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-10 text-center">Cas d’usage de l’IA</h1>
 
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
         {useCases.map((useCase, idx) => (

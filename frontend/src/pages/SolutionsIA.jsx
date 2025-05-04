@@ -33,7 +33,7 @@ export default function SolutionsIA() {
     <div className="p-8 max-w-6xl mx-auto">
       {/* Centered Title and Icon */}
       <div className="flex flex-col items-center justify-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800 text-center">
+        <h1 className="text-3xl font-bold text-gray-800 text-center mb-10">
           Solutions d’Intelligence Artificielle
         </h1>
       </div>
