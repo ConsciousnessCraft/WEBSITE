@@ -20,11 +20,10 @@ function App() {
     <Router>
       <div className="bg-black min-h-screen text-white">
         {/* Navbar */}
-        <nav className="bg-gray-900 text-white p-6 shadow-lg sticky top-0 z-10">
-        <NavLink to="/" className="text-3xl font-extrabold text-white">Logo</NavLink>
+        <nav className="bg-black text-white p-6 shadow-lg sticky top-0 z-50">
+       
           <div className="max-w-6xl mx-auto flex justify-between items-center">
             
-
             {/* Hamburger Icon for Mobile */}
             <div className="md:hidden" onClick={toggleMenu}>
               {isMenuOpen ? (
@@ -97,7 +96,7 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-white py-6 mt-10">
+        <footer className="bg-black text-white p-6 shadow-lg sticky top-0 z-50">
           <div className="max-w-6xl mx-auto text-center">
             <p>&copy; 2025 Votre Entreprise - Tous droits réservés</p>
             <div className="flex justify-center gap-8 mt-4">
