@@ -12,9 +12,14 @@ import Demo from './pages/Demo/Demo';
 import Contact from './pages/Contact';
 import { Linkedin, Phone, Mail, MapPin, Menu, X } from 'lucide-react';
 
+
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const apiUrl = process.env.REACT_APP_API_URL;
+  console.log((apiUrl));
+  
 
   return (
     <Router>
@@ -98,6 +103,7 @@ function App() {
         {/* Footer */}
         <footer className="bg-black text-white p-6 shadow-lg sticky top-0 z-50">
           <div className="max-w-6xl mx-auto text-center">
+          
             <p>&copy; 2025 Votre Entreprise - Tous droits réservés</p>
             <div className="flex justify-center gap-8 mt-4">
               <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
