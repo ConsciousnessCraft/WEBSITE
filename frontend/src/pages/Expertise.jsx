@@ -43,7 +43,7 @@ export default function Expertise() {
           animate={{ opacity: 0.2 }}
           transition={{ duration: 2, ease: 'easeInOut' }}
         >
-          <img src={AIImage} alt="AI Image" className="object-cover w-full h-full grayscale" />
+          <img src={AIImage} alt="AIImg" className="object-cover w-full h-full grayscale" />
         </motion.div>
   
         {/* Content */}
