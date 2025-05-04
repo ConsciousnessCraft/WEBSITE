@@ -1,4 +1,4 @@
-import { Brain, Eye, MessageSquareText, Activity, ShieldAlert } from 'lucide-react';
+import { Eye, MessageSquareText, Activity, ShieldAlert } from 'lucide-react';
 import AIImage from '../assets/object-detection-demo.png'; // Your image file
 
 const solutions = [
