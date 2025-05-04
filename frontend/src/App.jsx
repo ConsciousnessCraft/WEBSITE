@@ -20,36 +20,62 @@ function App() {
     <Router>
       <div className="bg-black min-h-screen text-white">
         {/* Navbar */}
-        <nav className="bg-gray-900 text-white p-6 sticky top-0 z-10">
+        <nav className="bg-gray-900 text-white p-6 shadow-lg sticky top-0 z-10">
         <NavLink to="/" className="text-3xl font-extrabold text-white">Logo</NavLink>
-          <div className="max-w-6xl mx-auto flex items-center justify-between">
-            {/* Left side: Logo */}
+          <div className="max-w-6xl mx-auto flex justify-between items-center">
             
 
-            {/* Right side: Hamburger & Links */}
-            <div className="flex items-center gap-4">
-              {/* Mobile Menu Icon */}
-              <div className="md:hidden" onClick={toggleMenu}>
-                {isMenuOpen ? (
-                  <X className="h-6 w-6 text-white" />
-                ) : (
-                  <Menu className="h-6 w-6 text-white" />
-                )}
-              </div>
+            {/* Hamburger Icon for Mobile */}
+            <div className="md:hidden" onClick={toggleMenu}>
+              {isMenuOpen ? (
+                <X className="h-6 w-6 text-white" />
+              ) : (
+                <Menu className="h-6 w-6 text-white" />
+              )}
+            </div>
 
-              {/* Navigation Links */}
-              <div className={`absolute top-full left-0 w-full md:static md:flex md:items-center md:gap-6 bg-gray-900 p-4 md:p-0 transition-all duration-300 ${isMenuOpen ? 'block' : 'hidden'} md:block`}>
-                <NavLink to="/" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium" : "text-lg font-medium hover:text-gray-400"}>Accueil</NavLink>
-                <NavLink to="/expertise" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium whitespace-nowrap" : "text-lg font-medium hover:text-gray-400 whitespace-nowrap"}>Notre expertise</NavLink>
-                <NavLink to="/solutions" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium whitespace-nowrap" : "text-lg font-medium hover:text-gray-400 whitespace-nowrap"}>Solutions IA</NavLink>
-                <NavLink to="/cas-usage" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium whitespace-nowrap" : "text-lg font-medium hover:text-gray-400 whitespace-nowrap"}>Cas d’usage</NavLink>
-                <NavLink to="/projets" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium whitespace-nowrap" : "text-lg font-medium hover:text-gray-400 whitespace-nowrap"}>Projets R&D</NavLink>
-                <NavLink to="/investir" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium whitespace-nowrap" : "text-lg font-medium hover:text-gray-400 whitespace-nowrap"}>Pourquoi investir</NavLink>
-                <NavLink to="/vision" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium whitespace-nowrap" : "text-lg font-medium hover:text-gray-400 whitespace-nowrap"}>Notre vision IA</NavLink>
-                <NavLink to="/blogs" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium" : "text-lg font-medium hover:text-gray-400"}>Blogs</NavLink>
-                <NavLink to="/demo" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium" : "text-lg font-medium hover:text-gray-400"}>Demo</NavLink>
-                <NavLink to="/contact" className={({ isActive }) => isActive ? "text-blue-500 text-lg font-medium" : "text-lg font-medium hover:text-gray-400"}>Contact</NavLink>
-              </div>
+            {/* Links for Desktop and Mobile */}
+            <div className={`flex flex-col md:flex-row justify-center md:justify-end gap-4 md:space-x-6 ${isMenuOpen ? 'block' : 'hidden'} md:flex`}>
+              <NavLink to="/" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Accueil
+              </NavLink>
+              <NavLink to="/expertise" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Notre expertise
+              </NavLink>
+              <NavLink to="/solutions" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Solutions IA
+              </NavLink>
+              <NavLink to="/cas-usage" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Cas d’usage
+              </NavLink>
+              <NavLink to="/projets" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Projets R&D
+              </NavLink>
+              <NavLink to="/investir" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Pourquoi investir
+              </NavLink>
+              <NavLink to="/vision" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Notre vision IA
+              </NavLink>
+              <NavLink to="/blogs" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Blogs
+              </NavLink>
+              <NavLink to="/demo" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Demo
+              </NavLink>
+              <NavLink to="/contact" className={({ isActive }) =>
+                `${isActive ? 'text-blue-500' : 'hover:text-gray-400'} text-lg font-medium whitespace-nowrap transition-colors`}>
+                Contact
+              </NavLink>
             </div>
           </div>
         </nav>
