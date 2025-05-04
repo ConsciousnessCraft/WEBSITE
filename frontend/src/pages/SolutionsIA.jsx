@@ -60,10 +60,11 @@ export default function SolutionsIA() {
           Exemple visuel : Détection d’objets en environnement industriel
         </h2>
         <img
-          src={AIImage} // Make sure to place the image in the public/assets folder
+          src={AIImage}
           alt="Détection d'objets IA"
-          className="mx-auto rounded-lg shadow-md max-w-md"
+          className="mx-auto rounded-lg shadow-md w-full max-w-md h-auto"
         />
+
         <p className="text-sm text-gray-500 mt-2">
           * Illustration d’un modèle identifiant des anomalies sur une chaîne de production
         </p>
